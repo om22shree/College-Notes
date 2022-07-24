@@ -1,4 +1,5 @@
-/* Frequency of elements in a randomly generated */
+/* Q1 : Find the frequency of elements in a randomly generated array which contains
+ some duplicate elements. */ 
 
 #include<stdio.h>
 #include<stdlib.h>

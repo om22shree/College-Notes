@@ -1,4 +1,5 @@
-/* Rearrang even odd format:- */
+/* Q2 : Rearrange a randomly generated array such that the even elements are
+followed by the odd elements. */
 
 #include<stdio.h>
 #include<stdlib.h>

@@ -1,3 +1,6 @@
+/* Q3 : Swap 3 elements such that a->b, b->c, c->a using a swap
+function which accepts only 2 input parameters. */
+
 #include<stdio.h>
 #include<stdlib.h>
 
