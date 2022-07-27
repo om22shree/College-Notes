@@ -13,15 +13,14 @@ void randoms(int upper, int count, int *arr){
     }
 }
 
-void evenOdd(int *arr, int n) {
+void EvenOdd(int *arr, int n) {
     for (int i = 0; i < n; i++) {
-        if(arr[i]%2 == 0) {
-            printf("%d ", arr[i]);
-        }
-    }
-    for (int i = 0; i < n; i++) {
-        if(arr[i]%2 == 1) {
-            printf("%d ", arr[i]);
+        for (int j = i + 1; j < n; j++) {
+            if(arr[i]%2 == 1 && arr[j]%2==0) {
+                int t = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
+            }
         }
     }
 }
@@ -35,7 +34,10 @@ int main() {
         printf("%d ", arr[i]);
     }
     printf("\nRearranged order is:-\n");
-    evenOdd(arr, n);
+    EvenOdd(arr, n);
     printf("\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
     return 0;
 }
