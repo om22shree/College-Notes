@@ -23,6 +23,7 @@ int MaxFrequency(int *array, int n)  {
                 count++;
                 if(count > maxCount) {
                     maxElement = array[j];
+                    maxCount = count;
                 }
             }
         }
@@ -47,7 +48,7 @@ int duplicates(int *arr, int n) {
 int main() {
     int n = 10;
     int arr[n];
-    randoms(7, n, arr);
+    randoms(8, n, arr);
     printf("The array is:-\n");
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
