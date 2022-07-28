@@ -19,7 +19,6 @@ int prime(int n) {
     return steps;
 }
 
-
 int main() {
     int n;
     printf("Enter the number: ");
