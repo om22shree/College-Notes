@@ -31,7 +31,6 @@ int MaxFrequency(int *array, int n)  {
     return maxElement;
 }
 
-
 int duplicates(int *arr, int n) {
     int ans = 0;
     for (int i = 0; i < n; i++) {
