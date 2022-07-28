@@ -3,27 +3,27 @@
 #include<math.h>
 
 int prime(int n) {
-    int check = 1;
     int steps = 0;
-    for (int i = 2; i < sqrt(n); i++) {
+    int check = 1;
+    for (int i = 2; i < n; i++) {
         steps++;
         if(n%i == 0) {
             check = 0;
-            break;
         }
     }
     if(check) {
-        printf("The number is prime");
+        printf("The nnumber is prime\n");
     } else {
-        printf("The number is not prime");
+        printf("The number is not prime\n");
     }
     return steps;
 }
+
 
 int main() {
     int n;
     printf("Enter the number: ");
     scanf("%d", &n);
-    printf("\nThe number of steps for %d input: %d", n, prime(n));
+    printf("The number of steps required for %d input: %d", n, prime(n));
     return 0;
 }
