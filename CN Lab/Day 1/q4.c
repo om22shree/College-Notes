@@ -1,3 +1,9 @@
+/*
+Q4: Write a C program to enter a number and store the number across a following
+structure and print the content of each member of the structure then aggregate
+each member of the structure to form the original number and print the same.
+*/
+
 #include<stdio.h>
 struct num {
     char c1;

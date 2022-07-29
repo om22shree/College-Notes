@@ -1,3 +1,7 @@
+/* 
+Q1: Write a function to swap 2 integers using pointers.
+*/
+
 #include<stdio.h>
 
 void swap(int *x, int *y) {

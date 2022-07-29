@@ -1,3 +1,8 @@
+/*
+Q2: Write a C program to create a structure and assign values to its members.
+Write a function to display each attribute using call by reference.
+*/
+
 #include<stdio.h>
 
 struct info {

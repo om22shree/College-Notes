@@ -1,3 +1,8 @@
+/*
+Q3: Write a C program to extract bytes of a number into characters and print
+thier contents.
+*/
+
 #include<stdio.h>
 
 int main () {

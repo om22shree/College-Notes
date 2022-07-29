@@ -1,3 +1,9 @@
+/*
+Q5: Write a C program to check whether the host machine is little endian or
+big endian. Enter a number, print the content of each byte location and convert 
+the endianness of the same i.e. little to big endian and vice versa.
+*/
+
 #include <stdio.h>
 
 int main () {
