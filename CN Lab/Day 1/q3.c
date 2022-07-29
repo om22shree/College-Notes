@@ -1,12 +1,14 @@
 #include<stdio.h>
 
 int main () {
-    int n = 0x346578;
-    char b0, b1, b2, b3;
-    b0 = ((char*)(&n))[0];
-    b1 = ((char*)(&n))[1];
-    b2 = ((char*)(&n))[2];
-    b3 = ((char*)(&n))[3];
-    printf("Bytes printed in 4 different characters:-\n %d, %d, %d, %d\n", b0, b1, b2, b3);
+    unsigned char bytes[4];
+    unsigned long n = 175;
+
+    bytes[0] = (n >> 24) & 0xFF;
+    bytes[1] = (n >> 16) & 0xFF;
+    bytes[2] = (n >> 8) & 0xFF;
+    bytes[3] = n & 0xFF;
+    printf("%x %x %x %x\n", bytes[0], bytes[1], bytes[2], bytes[3]);
+    
     return 0;
 }
