@@ -23,15 +23,13 @@ int swap_Endians(int value) {
 
 
 int main(){
-	unsigned int x = 0x20;
-    char *c = (char*) &x;
- 
-    printf ("*c is: 0x%x\n", *c);
-    if (*c == 0x10) {
-        printf ("little endian. \n");
-    } else {
-        printf ("big endian. \n");
-    }
+	int n = 20;
+	char c = n;
+	if(c) {
+		printf("The machine is big endian\n");
+	} else {
+		printf("The machine is little endian\n");
+	}
 
 	int big_Endian = 0x12345678;
 	int little_Endian = 0x78563412;
