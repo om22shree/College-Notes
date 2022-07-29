@@ -10,6 +10,7 @@ int swap_Endians(int value) {
 	left_middle_byle = (value & 0x0000FF00) >> 8;
 	right_middle_byte = (value & 0x00FF0000) >> 16;
 	rightmost_byte = (value & 0xFF000000) >> 24;
+	printf("Byte values: %d %d %d %d\n", leftmost_byte, left_middle_byle, right_middle_byte, rightmost_byte);
 	leftmost_byte <<= 24;
 	left_middle_byle <<= 16;
 	right_middle_byte <<= 8;
