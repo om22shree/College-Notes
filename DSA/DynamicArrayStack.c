@@ -43,14 +43,14 @@ int isEmpty(struct DynArrStack *S) {
 
 int top(struct DynArrStack *S) {
     if(isEmpty(S)) {
-        return INT_MIN;
+        return -1;
     }
     return S->array[S->top];
 }
 
 int pop(struct DynArrStack *S) {
     if(isEmpty(S)) {
-        return INT_MIN;
+        return -1;
     }
     return S->array[S->top--];
 }
