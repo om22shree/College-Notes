@@ -17,6 +17,6 @@ int main() {
     n.c2[0] = 2+'0';
     n.c2[1] = 3+'0';
     n.c3 = 4+'0';
-    printf("%c%c%c%c", n.c1, n.c2[0], n.c2[1], n.c3);
+    printf("%c%c%c%c\n", n.c1, n.c2[0], n.c2[1], n.c3);
     return 0;
 }
