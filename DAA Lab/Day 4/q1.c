@@ -23,8 +23,8 @@ void randoms(int upper, int count, int *arr){
 }
 
 double sort(int *arr, int n) {
-    int i, j, key;
     start = clock();
+    int i, j, key;
     for (int i = 1; i < n; i++) {
         key = arr[i];
         j = i - 1;
