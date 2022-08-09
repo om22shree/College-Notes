@@ -1,43 +1,44 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<sys/types.h>
-#include<sys/socket.h>
-#define MYPORT 8000
-
-struct in_addr {
-    unsigned long s_addr;
-};
-
-struct sockaddr_in {
-    short int sin_family;
-    unsigned short sin_port;
-    struct in_addr sin_addr;
-    unsigned char sin_zero[8];
-};
+#include <netinet/in.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <unistd.h>
+#define PORT 8080
 
 
 int main() {
-    struct sockaddr_in my_addr;
+    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    printf("Value of sockfd: %d\n", sockfd);
 
-    int sockfd1 = socket(AF_INET, SOCK_STREAM, 0);
-    printf("Value of sockfd: %d\n", sockfd1);
-    int sockfd2 = socket(AF_INET, SOCK_STREAM, 0);
-    printf("Value of sockfd: %d\n", sockfd2);
-    int sockfd3 = socket(AF_INET, SOCK_STREAM, 0);
-    printf("Value of sockfd: %d\n", sockfd3);
+    struct sockaddr_in my_addr = {
+    my_addr.sin_family = AF_INET,
+    my_addr.sin_port = htons(PORT),
+    my_addr.sin_addr.s_addr = INADDR_ANY
+    };
+    int addrlen = sizeof(my_addr);
 
-    my_addr.sin_family = AF_INET;
-    my_addr.sin_port = htons(MYPORT);
-    my_addr.sin_addr.s_addr = inet_addr("10.0.0.1");
-    memset(&(my_addr.sin_zero), '\0', 8);
-
-    int bindval = bind(sockfd1, (struct sockaddr*)&my_addr, sizeof(struct sockaddr));
-    if (bindval <= -1) {
+    int bindval = bind(sockfd, (struct sockaddr*)&my_addr, sizeof(my_addr));
+    if(bindval == -1) {
         printf("Binding failure\n");
     } else {
-        printf("Binding successful\n");
+        printf("Bindning Successful\n");
     }
 
+    if(listen(sockfd, 10) == -1) {
+        printf("Listening error\n");
+    } else {
+        printf("Started listening on Port: %d\n", PORT);
+    }
+
+    int chat = accept(sockfd, (struct sockaddr *)&my_addr, (socklen_t *)&addrlen);
+    char buffer[1024] = {0};
+    int readval = read(chat, buffer, 1024);
+    printf("%s\n", buffer);
+    send(chat, "Hello, this is Om Shree", strlen("Hello, this is Om Shree, 2006077"), 0);
+    printf("Introduction initiated.\n");
+
+    close(chat);
+    shutdown(sockfd, SHUT_RDWR);
     return 0;
 }
