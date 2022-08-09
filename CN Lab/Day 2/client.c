@@ -3,7 +3,7 @@
 #include<string.h>
 #include<sys/types.h>
 #include<sys/socket.h>
-#define MYPORT 8000
+#define MYPORT 8080
 
 struct in_addr {
     unsigned long s_addr;
