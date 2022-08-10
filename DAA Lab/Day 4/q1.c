@@ -139,7 +139,7 @@ int main() {
             printf("\nN value\t  Random complexity\t  Ascend complexity\t  Descend complexity\n");
             for (int step = 5000; step <= 50000; step = step + 5000) {
                 arr = realloc(arr, sizeof(int)*step);
-                randoms(100000, step, arr);
+                randoms(77, step, arr);
                 asct = sort(arr, n);
                 printf("%d\t  ", step);
                 printf("%lf\t\t  ", asct);
