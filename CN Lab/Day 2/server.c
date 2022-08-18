@@ -20,6 +20,10 @@ void func(int connfd)
 
 		// read the message from client and copy it in buffer
 		read(connfd, buff, sizeof(buff));
+        if (strncmp("exit", buff, 4) == 0) {
+			printf("Server Exit...\n");
+			break;
+		}
 		// print buffer which contains the client contents
 		printf("From client: %s\t To client : ", buff);
 		bzero(buff, MAX);
