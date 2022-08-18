@@ -10,8 +10,7 @@
 #define SA struct sockaddr
 
 // Function designed for chat between client and server.
-void func(int connfd)
-{
+void func(int connfd) {
 	char buff[MAX];
 	int n;
 	// infinite loop for chat
@@ -44,8 +43,7 @@ void func(int connfd)
 }
 
 // Driver function
-int main()
-{
+int main() {
 	int sockfd, connfd, len;
 	struct sockaddr_in servaddr, cli;
 
