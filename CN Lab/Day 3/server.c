@@ -54,7 +54,7 @@ int main() {
 	} else
 		printf("Socket successfully binded..\n");
 
-	if ((listen(sockfd, 5)) != 0) {
+	if ((listen(sockfd, 2)) != 0) {
 		printf("Listen failed...\n");
 		exit(0);
 	} else
