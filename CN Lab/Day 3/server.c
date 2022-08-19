@@ -15,7 +15,7 @@ void func(int connfd) {
 	for (;;) {
 		bzero(buff, MAX);
 		read(connfd, buff, sizeof(buff));
-		printf("From client: %s\t To client : ", buff);
+		printf("From client: %s\nTo client : ", buff);
         if (strncmp("exit", buff, 4) == 0) {
 			printf("Server Exit...\n");
 			break;
