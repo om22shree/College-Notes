@@ -17,6 +17,11 @@ void func(int sockfd) {
 		while ((buff[n++] = getchar()) != '\n')
 			;
 		write(sockfd, buff, sizeof(buff));
+        if (strncmp("exit", buff, 4) == 0) {
+			printf("Server Exit...\n");
+			break;
+		}
+        
 		bzero(buff, sizeof(buff));
 		read(sockfd, buff, sizeof(buff));
 		printf("From Server : %s", buff);
@@ -48,7 +53,6 @@ int main() {
 		exit(0);
 	} else
 		printf("connected to the server..\n");
-
 
 	func(sockfd);
 	close(sockfd);
