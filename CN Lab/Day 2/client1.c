@@ -34,7 +34,7 @@ void func(int sockfd) {
 
 int main() {
 	int sockfd, connfd;
-	struct sockaddr_in servaddr, cli;
+	struct sockaddr_in servaddr, cli1;
 
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (sockfd == -1) {
