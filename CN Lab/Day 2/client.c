@@ -12,7 +12,7 @@ void func(int sockfd) {
 	int n;
 	for (;;) {
 		bzero(buff, sizeof(buff));
-		printf("Enter the string : ");
+		printf("\tEnter the string : ");
 		n = 0;
 		while ((buff[n++] = getchar()) != '\n')
 			;
