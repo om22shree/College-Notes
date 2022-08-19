@@ -1,77 +1,68 @@
-#include"stdio.h"
-#include"stdlib.h"
-#include"sys/types.h"
-#include"sys/socket.h"
-#include"string.h"
-#include"netinet/in.h"
+#include <stdio.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#define MAX 80
+#define PORT 8080
+#define SA struct sockaddr
 
-#define PORT 4444
-#define BUF_SIZE 100
-#define CLADDR_LEN 100
+void func(int connfd) {
+	char buff[MAX];
+	int n;
+	for (;;) {
+		bzero(buff, MAX);
+		read(connfd, buff, sizeof(buff));
+		printf("From client: %s\t To client : ", buff);
+		bzero(buff, MAX);
+		n = 0;
+		while ((buff[n++] = getchar()) != '\n')
+			;
+		write(connfd, buff, sizeof(buff));
+		if (strncmp("exit", buff, 4) == 0) {
+			printf("Server Exit...\n");
+			break;
+		}
+	}
+}
 
-void main() {
- struct sockaddr_in addr, cl_addr;
- int sockfd, len, ret, newsockfd;
- char buffer[BUF_SIZE];
- pid_t childpid;
- char clientAddr[CLADDR_LEN];
- 
- sockfd = socket(AF_INET, SOCK_STREAM, 0);
- if (sockfd < 0) {
-  printf("Error creating socket!\n");
-  exit(1);
- }
- printf("Socket created...\n");
- 
- memset(&addr, 0, sizeof(addr));
- addr.sin_family = AF_INET;
- addr.sin_addr.s_addr = INADDR_ANY;
- addr.sin_port = PORT;
- 
- ret = bind(sockfd, (struct sockaddr *) &addr, sizeof(addr));
- if (ret < 0) {
-  printf("Error binding!\n");
-  exit(1);
- }
- printf("Binding done...\n");
+int main() {
+	int sockfd, connfd, len;
+	struct sockaddr_in servaddr, cli;
+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	if (sockfd == -1) {
+		printf("socket creation failed...\n");
+		exit(0);
+	} else
+		printf("Socket successfully created..\n");
+	bzero(&servaddr, sizeof(servaddr));
 
- printf("Waiting for a connection...\n");
- listen(sockfd, 2);
+	servaddr.sin_family = AF_INET;
+	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+	servaddr.sin_port = htons(PORT);
 
- for (;;) { //infinite loop
-  len = sizeof(cl_addr);
-  newsockfd = accept(sockfd, (struct sockaddr *) &cl_addr, &len);
-  if (newsockfd < 0) {
-   printf("Error accepting connection!\n");
-   exit(1);
-  }
-  printf("Connection accepted...\n");
+	if ((bind(sockfd, (SA*)&servaddr, sizeof(servaddr))) != 0) {
+		printf("socket bind failed...\n");
+		exit(0);
+	} else
+		printf("Socket successfully binded..\n");
 
-  inet_ntop(AF_INET, &(cl_addr.sin_addr), clientAddr, CLADDR_LEN);
-  if ((childpid = fork()) == 0) { //creating a child process
+	if ((listen(sockfd, 5)) != 0) {
+		printf("Listen failed...\n");
+		exit(0);
+	} else
+		printf("Server listening..\n");
+	len = sizeof(cli);
 
-   close(sockfd); 
-//stop listening for new connections by the main process. 
-//the child will continue to listen. 
-//the main process now handles the connected client.
+	connfd = accept(sockfd, (SA*)&cli, &len);
+	if (connfd < 0) {
+		printf("server accept failed...\n");
+		exit(0);
+	} else
+		printf("server accept the client...\n");
 
-   for (;;) {
-    memset(buffer, 0, BUF_SIZE);
-    ret = recvfrom(newsockfd, buffer, BUF_SIZE, 0, (struct sockaddr *) &cl_addr, &len);
-    if(ret < 0) {
-     printf("Error receiving data!\n");  
-     exit(1);
-    }
-    printf("Received data from %s: %s\n", clientAddr, buffer); 
-
-    ret = sendto(newsockfd, buffer, BUF_SIZE, 0, (struct sockaddr *) &cl_addr, len);   
-    if (ret < 0) {  
-     printf("Error sending data!\n");  
-     exit(1);  
-    }  
-    printf("Sent data to %s: %s\n", clientAddr, buffer);
-   }
-  }
-  close(newsockfd);
- }
+	func(connfd);
+	close(sockfd);
 }
