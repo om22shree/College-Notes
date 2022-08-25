@@ -8,7 +8,7 @@
 
 int main() {
 	int socket_desc, client_sock1, client_sock2, length, i, flag=0;
-	char buf1[100], buf2[100], mes[100]; /* We will use this buffer for communication */
+	char buf1[100], buf2[100], mes[100];
 	struct sockaddr_in server, client;
 
 	socket_desc = socket(AF_INET,SOCK_STREAM,0);
@@ -18,9 +18,8 @@ int main() {
 
 	i = bind(socket_desc, (struct sockaddr *)&server, sizeof(server));
 	printf("test %d%d\n",socket_desc, i);
-
-	listen(socket_desc, 5);
-	length=sizeof(socket_desc);
+	listen(socket_desc, 2);
+	length = sizeof(socket_desc);
 	
 	client_sock1 = accept(socket_desc, (struct sockaddr *) &client, &length);
 	client_sock2 = accept(socket_desc, (struct sockaddr *) &client, &length);
@@ -50,7 +49,7 @@ int main() {
 		 	break;
 		}
 	}
-	
+
 	close(client_sock1);
 	close(client_sock2);
 	return 0;
