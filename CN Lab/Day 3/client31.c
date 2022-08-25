@@ -6,14 +6,12 @@
 #include<fcntl.h>
 #include<string.h>
 
-//Driver code
 int main() {
 	int i, sock, flag=0;
 	char buf[100], mes[100];
 	struct sockaddr_in server;
 
 	sock = socket(AF_INET,SOCK_STREAM,0);
-
 	server.sin_family = AF_INET;
 	server.sin_addr.s_addr = inet_addr("127.0.0.1");
 	server.sin_port = 60018;
