@@ -33,7 +33,12 @@ int main() {
 
 		recv(client_sock1, buf, 100, 0);
         printf("Client: %s\n", buf);
-		int num1 = (int)(*buf), num2 = (int)(*(buf + 2));
+		printf("Server receives: %s\n", buf);
+		char c1 = *(buf);
+		char c2 = *(buf);
+		int num1 = (int)(*buf);
+		int num2 = (int)(c2);
+		printf("Numbers are: %d %d\n", num1, num2);
 		int num = num1 * num2;
 		for(i=0; i < 100; i++)    
             buf[i] = '\0';
@@ -46,7 +51,7 @@ int main() {
 		}
 	}
 
-	pclose(client_sock1);
+	close(client_sock1);
 	return 0;
 }
 
