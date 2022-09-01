@@ -26,8 +26,7 @@ int main() {
 	send(sock, &n2, sizeof(n2), 0);
 	recv(sock, &ans, sizeof(ans), 0);
 	printf("Server sent: %d\n", ans);
-	
-	close(sock);
+
 	return 0;
 }
 
