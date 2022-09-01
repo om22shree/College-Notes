@@ -20,7 +20,7 @@ int main() {
 	int n1, n2, ans;
 	printf("Number 1: ");
 	scanf("%d", &n1);
-	printf("\nNumber 2: ");
+	printf("Number 2: ");
 	scanf("%d", &n2);
 	send(sock, &n1, sizeof(n1), 0);
 	send(sock, &n2, sizeof(n2), 0);

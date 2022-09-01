@@ -26,7 +26,7 @@ int main() {
 	recv(client_sock1, &n1, sizeof(n1), 0);
 	recv(client_sock1, &n2, sizeof(n2), 0);
 	printf("Client number 1: %d\n", n1);
-	printf("Client number 2: %d", n2);
+	printf("Client number 2: %d\n", n2);
 	ans = n1 * n2;
 	send(client_sock1, &ans, sizeof(ans), 0);
 
