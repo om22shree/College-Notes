@@ -8,7 +8,6 @@
 
 int main() {
 	int socket_desc, client_sock1, length, i, flag=0;
-    char buf[100], mes[100];
     struct sockaddr_in server, client;
 
     socket_desc = socket(AF_INET,SOCK_STREAM,0);
@@ -23,33 +22,13 @@ int main() {
 	
 	client_sock1 = accept(socket_desc, (struct sockaddr *) &client, &length);
 
-    strcpy(mes, "exit");
-    for (i = 0; i < 100; i++)
-        buf[i] ='\0';
-
-	while(flag == 0) {
-		for(i=0; i < 100; i++)
-            buf[i] = '\0';
-
-		recv(client_sock1, buf, 100, 0);
-        printf("Client: %s\n", buf);
-		printf("Server receives: %s\n", buf);
-		char c1 = *(buf);
-		char c2 = *(buf);
-		int num1 = (int)(*buf);
-		int num2 = (int)(c2);
-		printf("Numbers are: %d %d\n", num1, num2);
-		int num = num1 * num2;
-		for(i=0; i < 100; i++)    
-            buf[i] = '\0';
-		sprintf(buf, "%d", num);
-        send(client_sock1, buf, 100, 0);
-		
-		if(strcmp(buf, mes) == 0) {
-		 	flag = 1;
-		 	break;
-		}
-	}
+	int n1, n2, ans;
+	recv(client_sock1, &n1, sizeof(n1), 0);
+	recv(client_sock1, &n2, sizeof(n2), 0);
+	printf("Client number 1: %d\n", n1);
+	printf("Client number 2: %d", n2);
+	ans = n1 * n2;
+	send(client_sock1, &ans, sizeof(ans), 0);
 
 	close(client_sock1);
 	return 0;

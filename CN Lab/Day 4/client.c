@@ -8,7 +8,6 @@
 
 int main() {
 	int i, sock, flag=0;
-	char buf[100], mes[100];
 	struct sockaddr_in server;
 
 	sock = socket(AF_INET,SOCK_STREAM,0);
@@ -18,27 +17,15 @@ int main() {
 
 	connect(sock, (struct sockaddr *)&server, sizeof(server));
 
-	for(i=0; i < 100; i++) { 	
-		buf[i] = '\0'; 
-		mes[i]='\0';
-	}
-	strcpy(mes,"exit");
-
-	while(flag == 0) {
-		for(i=0; i < 100; i++) buf[i] = '\0';
-		printf("\nString: ");
-		scanf("%[^\n]%*c", buf); 
-		send(sock, buf, 100, 0);
-		for(i=0; i < 100; i++) 
-			buf[i] = '\0';
-		recv(sock, buf, 100, 0);
-		printf("Server sent: %s\n", buf);
-		
-		if(strcmp(buf,mes) == 0) {
-			flag = 1;
-			break;
-		}
-	}
+	int n1, n2, ans;
+	printf("Number 1: ");
+	scanf("%d", &n1);
+	printf("\nNumber 2: ");
+	scanf("%d", &n2);
+	send(sock, &n1, sizeof(n1), 0);
+	send(sock, &n2, sizeof(n2), 0);
+	recv(sock, &ans, sizeof(ans), 0);
+	printf("Server sent: %d\n", ans);
 	
 	close(sock);
 	return 0;
