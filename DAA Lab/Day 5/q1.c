@@ -50,31 +50,43 @@ int binarySearch(int *arr, int l, int r, int x) {
 }
 
 int main() {
-    int n, x, sol;
-    printf("Enter the value of n: ");
-    scanf("%d", &n);
-    int arr[n];
-    printf("\nArray:-\n");
-    randoms(100, n, arr);
-    printArray(arr, n);
-    printf("Enter the element to be found: ");
-    sort(arr, n);
-    printf("Sorted array:-\n");
-    scanf("%d", &x);
-    printArray(arr, n);
+    printf("The complexity table:-\n");
+    printf("N value\t Worst time\t Average time\t Best time\n");
 
-    // singular trial case :-
-    int start = clock();
-    sol = binarySearch(arr, 0, n, x);
-    if (sol != -1) {
-        printf("\nElement was first found at index: %d\n", sol);
+    for (int i = 5001; i <= 50001; i+=5000) {
+        int n, x, sol;
+        double wt, bt, at;
+        n = i;
+        int arr[n];
+        randoms(10000, n, arr);
+        sort(arr, n);
+        
+        // Best case :-
+        x = arr[n / 2];
+        int start = clock();
+        sol = binarySearch(arr, 0, n, x);
+        int end = clock();
+        double time = (double)(end - start)/CLOCKS_PER_SEC;
+        bt = time;
+
+        // Average case :-
+        x = arr[n / 2 + n / 4 + n / 8];
+        int start = clock();
+        sol = binarySearch(arr, 0, n, x);
+        int end = clock();
+        double time = (double)(end - start)/CLOCKS_PER_SEC;
+        at = time;
+
+        // Worst case :-
+        x = arr[n - 1] + 1000;
+        int start = clock();
+        sol = binarySearch(arr, 0, n, x);
+        int end = clock();
+        double time = (double)(end - start)/CLOCKS_PER_SEC;
+        wt = time;
+
+        printf("%d\t %ld/t %ld\t %ld\n", n, bt, at, wt);
     }
-    else {
-        printf("\nElement was not found\n");
-    }
-    int end = clock();
-    double time = (double)(end - start)/CLOCKS_PER_SEC;
-    printf("Time taken: %f", time);
-    
+
     return 0;
 }
