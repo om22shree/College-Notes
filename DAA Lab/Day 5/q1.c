@@ -35,7 +35,7 @@ void sort(int* arr, int n) {
 
 int binarySearch(int *arr, int l, int r, int x) {
     int start, end;
-    start = clock();
+    
     if (r >= l) {
         int mid = l + (r - l) / 2;
         if (arr[mid] == x) {
@@ -45,9 +45,7 @@ int binarySearch(int *arr, int l, int r, int x) {
             return binarySearch(arr, l, mid - 1, x);
         return binarySearch(arr, mid + 1, r, x);
     }
-    end = clock();
-    double time = (double)(end - start)/CLOCKS_PER_SEC;
-    printf("Time taken: %f", time);
+
     return -1;
 }
 
@@ -60,10 +58,13 @@ int main() {
     randoms(100, n, arr);
     printArray(arr, n);
     printf("Enter the element to be found: ");
-    scanf("%d", &x);
     sort(arr, n);
     printf("Sorted array:-\n");
+    scanf("%d", &x);
     printArray(arr, n);
+
+    // singular trial case :-
+    int start = clock();
     sol = binarySearch(arr, 0, n, x);
     if (sol != -1) {
         printf("\nElement was first found at index: %d\n", sol);
@@ -71,6 +72,9 @@ int main() {
     else {
         printf("\nElement was not found\n");
     }
-
+    int end = clock();
+    double time = (double)(end - start)/CLOCKS_PER_SEC;
+    printf("Time taken: %f", time);
+    
     return 0;
 }
