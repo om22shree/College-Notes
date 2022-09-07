@@ -69,7 +69,16 @@ int main() {
         int x = (rand()%(upper-lower+1))+lower;
         int stepCounter = 0;
         int found = binarySearch(arr, 0, n-1, x, &stepCounter);
-        printf("%d\t%d\t%d\n", slno++, n, stepCounter);
+        int best, worst, average;
+        average = stepCounter;
+        stepCounter = 0;
+        x = arr[n / 2];
+        found = binarySearch(arr, 0, n - 1, x, &stepCounter);
+        best = stepCounter;
+        x = arr[n-1];
+        found = binarySearch(arr, 0, n - 1, x, &stepCounter);
+        worst = stepCounter;
+        printf("%d\t%d\t%d\t%d\t%d\t\n", slno++, n, best, average, worst);
     }
     return 0;
 }
