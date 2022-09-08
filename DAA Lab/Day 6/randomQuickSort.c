@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <time.h>
 
+void randoms(int upper, int count, int *arr){
+    int lower = 1;
+    int i;
+    for (i = 0; i < count; i++) {
+        int num = (rand() % (upper - lower + 1)) + lower;
+        arr[i] = num;
+    }
+}
+
+
 int partition(int arr[], int low, int high) {
 	int pivot = arr[low];
 	int i = low - 1, j = high + 1;
@@ -46,12 +56,13 @@ void printArray(int arr[], int n) {
 }
 
 int main() {
-    int n = 100;
+    int n = 50;
     int *arr = (int *)malloc(sizeof(int) * n);
+    randoms(77, n, arr);
     printf("Before sorting:-\n");
     printArray(arr, n);
     quickSort(arr, 0, n - 1);
-    printf("Sorted array: \n");
+    printf("Sorted array:-\n");
 	printArray(arr, n);
 	return 0;
 }
