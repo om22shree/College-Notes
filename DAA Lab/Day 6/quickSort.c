@@ -27,12 +27,13 @@ int partition(int *arr, int low, int high) {
         while (pivot < arr[j])
             j--;
         if (i < j) {
+            // Swap arr[i], arr[j];
             int temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp;
         }
     }
-
+    // Swap arr[low], arr[j];
     int temp = arr[low];
     arr[low] = arr[j];
     arr[j] = temp;
