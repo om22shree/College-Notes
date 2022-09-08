@@ -55,13 +55,17 @@ void printArray(int arr[], int n) {
 }
 
 int main() {
-    int n = 50;
-    int *arr = (int *)malloc(sizeof(int) * n);
-    randoms(77, n, arr);
-    printf("Before sorting:-\n");
-    printArray(arr, n);
-    quickSort(arr, 0, n - 1);
-    printf("Sorted array:-\n");
-	printArray(arr, n);
+	for (int n = 50; n <= 500; n+=50) {
+		printf("For n: %d\n", n);
+		int *arr = (int *)malloc(sizeof(int) * n);
+		randoms(77, n, arr);
+    	printf("Before sorting:-\n");
+    	printArray(arr, n);
+    	quickSort(arr, 0, n - 1);
+    	printf("Sorted array:-\n");
+		printArray(arr, n);
+		printf("\n");
+	}
+
 	return 0;
 }
