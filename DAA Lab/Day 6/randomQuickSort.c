@@ -11,7 +11,6 @@ void randoms(int upper, int count, int *arr){
     }
 }
 
-
 int partition(int arr[], int low, int high) {
 	int pivot = arr[low];
 	int i = low - 1, j = high + 1;
