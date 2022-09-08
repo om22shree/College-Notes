@@ -50,13 +50,17 @@ void quickSort(int *arr, int low, int high) {
 }
 
 int main() {
-    int n = 50;
-    int *arr = (int*)malloc(sizeof(int) * n);
-    randoms(77, n, arr);
-    printf("Before Sort:-\n");
-    printArray(arr, n);
-    quickSort(arr, 0, n - 1);
-    printf("After Sort:-\n");
-    printArray(arr, n);
+    for (int n = 50; n <= 500; n+=50) {
+        printf("For n: %d\n", n);
+        int *arr = (int *)malloc(sizeof(int) * n);
+        randoms(77, n, arr);
+        printf("Before Sort:-\n");
+        printArray(arr, n);
+        quickSort(arr, 0, n - 1);
+        printf("After Sort:-\n");
+        printArray(arr, n);
+        printf("\n");
+    }
+
     return 0;
 }
