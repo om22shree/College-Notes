@@ -49,7 +49,7 @@ void printArray(int *arr, int n) {
 }
   
 int main() {
-	for (int n = 500; n <= 500; n+=50) {
+	for (int n = 50; n <= 500; n+=50) {
 		int arr[n];
 		printf("For n = %d:-\nBefore sorting:-\n", n);
 		randoms(50, n, arr);
