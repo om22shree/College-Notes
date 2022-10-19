@@ -14,7 +14,6 @@ struct MinHeap {
 	struct MinHeapNode** array;
 };
 
-
 struct MinHeapNode* newNode(char data, unsigned freq) {
 	struct MinHeapNode* temp = (struct MinHeapNode*)malloc(
 		sizeof(struct MinHeapNode));
@@ -105,6 +104,7 @@ struct MinHeap* createAndBuildMinHeap(char data[], int freq[], int size) {
 	buildMinHeap(minHeap);
 	return minHeap;
 }
+
 struct MinHeapNode* buildHuffmanTree(char data[], int freq[], int size) {
 	struct MinHeapNode *left, *right, *top;
 	struct MinHeap* minHeap = createAndBuildMinHeap(data, freq, size);
