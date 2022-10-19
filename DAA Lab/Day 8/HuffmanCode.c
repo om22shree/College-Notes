@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX_TREE_HT 100
+
 struct MinHeapNode {
 	char data;
 	unsigned freq;
