@@ -5,6 +5,7 @@ void knapsack(int n, float weight[], float profit[], float capacity) {
    float x[20], tp = 0;
    int i, j, u;
    u = capacity; 
+   // Array to store current usage of an element.
    for (i = 0; i < n; i++)
         x[i] = 0.0;
  
@@ -28,7 +29,8 @@ int main() {
     float weight[20], profit[20], capacity;
     int num, i, j;
     float ratio[20], temp;
- 
+    
+    // User input :-
     printf("\nEnter the no. of objects: ");
     scanf("%d", &num);
     printf("\nEnter the wts and profits of each object:-\n");
@@ -38,6 +40,7 @@ int main() {
     printf("\nEnter the capacityacity of knapsack:- ");
     scanf("%f", &capacity);
     
+    // Sort the ratio array :-
     for (i = 0; i < num; i++) {
         ratio[i] = profit[i] / weight[i];
     }
@@ -58,7 +61,8 @@ int main() {
             }
         }
     } 
-
+    
+    // Function call
     knapsack(num, weight, profit, capacity);
     return 0;
 }
