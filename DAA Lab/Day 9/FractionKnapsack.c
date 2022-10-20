@@ -8,7 +8,7 @@ void knapsack(int n, float weight[], float profit[], float capacity) {
    // Array to store current usage of an element.
    for (i = 0; i < n; i++)
         x[i] = 0.0;
- 
+    // Full iteration over the object array.
    for (i = 0; i < n; i++) {
         if (weight[i] > u)
             break;
