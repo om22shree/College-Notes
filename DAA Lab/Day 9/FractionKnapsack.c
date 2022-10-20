@@ -41,7 +41,7 @@ int main() {
     printf("\nEnter the capacityacity of knapsack:- ");
     scanf("%f", &capacity);
     
-    // Sort the ratio array :-
+    // Bubble Sort the ratio array :-
     for (i = 0; i < num; i++) {
         ratio[i] = profit[i] / weight[i];
     }
