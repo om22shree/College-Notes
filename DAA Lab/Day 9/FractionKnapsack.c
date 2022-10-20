@@ -18,6 +18,7 @@ void knapsack(int n, float weight[], float profit[], float capacity) {
             u = u - weight[i];
         }
     }
+    // Fractional addition of the remaining array.
     if (i < n)
         x[i] = u / weight[i];
     tp = tp + (x[i] * profit[i]);
