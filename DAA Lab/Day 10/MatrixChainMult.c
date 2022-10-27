@@ -15,7 +15,7 @@ void print_optimal(int i,int j) {
     }
 }
 
-void matmultiply(void) {
+void matmultiply() {
     long int q;
     int k;
     for(i=n;i>0;i--)
