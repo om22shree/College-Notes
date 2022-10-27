@@ -62,11 +62,12 @@ int main() {
         scanf("%d",&p[k]);
     }
     matmultiply();
+    /* Not necessary
     printf("\nCost Matrix M:\n");
     for(i=1;i<=n;i++)
         for(j=i;j<=n;j++)
             printf("m[%d][%d]: %ld\n",i,j,m[i][j]);
-
+    */
     i = 1, j = n;
     printf("\nMultiplication Sequence : ");
     print_optimal(i,j);
