@@ -44,7 +44,7 @@ int main(){
     q.f = q.r = 0;
     q.arr = (int*) malloc(q.size*sizeof(int));
     
-    // BFS Implementation 
+    // BFS
     int node;
     int i = 1;
     int visited[7] = {0,0,0,0,0,0,0};
@@ -59,7 +59,7 @@ int main(){
     };
     printf("%d", i);
     visited[i] = 1;
-    enqueue(&q, i); // Enqueue i for exploration
+    enqueue(&q, i);
     while (!isEmpty(&q)) {
         int node = dequeue(&q);
         for (int j = 0; j < 7; j++) {
