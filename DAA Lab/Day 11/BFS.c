@@ -1,12 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
  
-struct queue {
-    int size;
-    int f;
-    int r;
-    int* arr;
-};
+struct queue { int size; int f; int r; int* arr; };
  
 int isEmpty(struct queue *q){
     if(q->r == q->f) return 1;
