@@ -57,14 +57,14 @@ int main(){
         {0,0,0,0,1,0,0}, 
         {0,0,0,0,1,0,0} 
     };
-    printf("%d", i);
+    printf("%d ", i);
     visited[i] = 1;
     enqueue(&q, i);
     while (!isEmpty(&q)) {
         int node = dequeue(&q);
         for (int j = 0; j < 7; j++) {
             if(a[node][j] == 1 && visited[j] == 0){
-                printf("%d", j);
+                printf("%d ", j);
                 visited[j] = 1;
                 enqueue(&q, j);
             }
