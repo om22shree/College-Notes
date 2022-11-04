@@ -12,7 +12,7 @@
 #include <fcntl.h>
 #include <sys/ioctl.h>
 
-#define BACKLOG 2   /* Number of connections in queue before being rejected*/
+#define BACKLOG 3   /* Number of connections in queue before being rejected*/
 #define MAXDATASIZE 1000
 #define STDIN 0
 
