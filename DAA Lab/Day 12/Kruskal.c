@@ -6,8 +6,8 @@ int i, j, k, a, b, u, v, n, ne = 1;
 int min, mincost = 0, cost[9][9], parent[9];
 int find(int);
 int uni(int, int);
+
 void main() {
-    printf("\n\tImplementation of Kruskal's Algorithm\n");
     printf("\nEnter the no. of vertices:");
     scanf("%d", & n);
     printf("\nEnter the cost adjacency matrix:\n");
