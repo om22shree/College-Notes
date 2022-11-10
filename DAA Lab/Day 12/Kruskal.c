@@ -37,18 +37,18 @@ void main() {
         cost[a][b] = cost[b][a] = 999;
     }
     printf("\n\tMinimum cost = %d\n", mincost);
-    }
+}
     
-    int find(int i) {
-        while (parent[i])
-            i = parent[i];
-        return i;
-    }
+int find(int i) {
+    while (parent[i])
+        i = parent[i];
+    return i;
+}
     
-    int uni(int i, int j) {
-        if (i != j) {
-            parent[j] = i;
-            return 1;
-        }
-        return 0;
+int uni(int i, int j) {
+    if (i != j) {
+        parent[j] = i;
+        return 1;
     }
+    return 0;
+}
