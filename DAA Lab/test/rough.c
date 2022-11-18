@@ -17,8 +17,10 @@ int main() {
                 flag++;
             }
         }
-    printf("%d ", ans);
-    return 0;
+
+        for (int i = 0; i < n; i)
+            printf("%d ", ans);
+        return 0;
 }
 
 /*
