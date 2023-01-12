@@ -1,2 +1,4 @@
-name <- readline("Enter your name: ")
-roll <- readline("Enter your roll no: ")
+name<-readline("Enter your name: ")
+age<-readline("Enter your age: ")
+cat(name, " ", age)
+
