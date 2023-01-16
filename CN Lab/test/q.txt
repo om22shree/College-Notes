@@ -1,3 +1,0 @@
-Set 2-ODD ROLL NO.
-1.	Write the Echo client and server programs in C language using UDP. The Echo clients should verify whether the text string they received from the server is the same text string that they sent or not. Also use the shutdown system call to improve the performance programs
-2.	Design a wired and wireless network (LAN AND WAN Both) using cisco packet tracer. Also, implement the DHCP Server in Lan and check the connectivity.
