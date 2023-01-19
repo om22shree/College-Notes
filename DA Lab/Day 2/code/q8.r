@@ -1,0 +1,5 @@
+vec <- c(1, 2, 3, 4, 5)
+length <- length(vec)
+dimension <- length(vec)
+print(paste("Length: ", length))
+print(paste("Dimension: ", dimension))
