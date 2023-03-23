@@ -1,0 +1,6 @@
+sen = readline("Enter a string: ") 
+x = as.integer(readline("Enter substring start: ")) 
+y = as.integer(readline("Enter substring end: ")) 
+print(substring(sen,x,y)) 
+z = readline("Enter new string: ") 
+print(gsub(substring(sen,x,y),z,sen)) 

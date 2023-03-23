@@ -1,0 +1,12 @@
+DataFrame in R :-
+
+emp <- dataframe(
+  empID = c(1:5)
+  Name = c("Sourav", "Sinha", "Rohit", "Anand", "Om")
+  Dept = c("IT", "CSE", "CSSE", "CSCE", "MBA")
+  Salary = c(10000, 20000, 30000, 40000, 50000)
+)
+
+emp$Name
+emp[2]
+emp[["Name"]]
